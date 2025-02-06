@@ -15,7 +15,7 @@ using namespace vex;
 
 // A global instance of competition
 competition Competition;
-brain Brain;
+// brain Brain;
 
 // define your global instances of motors and other devices here
 
@@ -62,66 +62,66 @@ void pre_auton(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-// double fabs(double x) {
-//     return (x < 0) ? -x : x;
-// }
+double fabs(double x) {
+    return (x < 0) ? -x : x;
+}
 
-// double sqrt(double x) {
-//     double guess = x / 2.0;
-//     double epsilon = 0.0001;  // This controls the precision of the result
+double sqrt(double x) {
+    double guess = x / 2.0;
+    double epsilon = 0.0001;  // This controls the precision of the result
     
-//     while (fabs(guess * guess - x) > epsilon) {
-//         guess = (guess + x / guess) / 2.0;
-//     }
+    while (fabs(guess * guess - x) > epsilon) {
+        guess = (guess + x / guess) / 2.0;
+    }
     
-//     return guess;
-// }
+    return guess;
+}
 
-// double atan(double x) {
-//     double result = x;
-//     double term = x;  // First term in the series
-//     double x_squared = x * x;
-//     int n = 1;  // Start with the first term
+double atan(double x) {
+    double result = x;
+    double term = x;  // First term in the series
+    double x_squared = x * x;
+    int n = 1;  // Start with the first term
 
-//     // Iterate to calculate a better approximation
-//     while (term > 0.00001 || term < -0.00001) {
-//         n += 2;
-//         term = (-1) * term * x_squared * (n - 1) / n;
-//         result += term;
-//     }
+    // Iterate to calculate a better approximation
+    while (term > 0.00001 || term < -0.00001) {
+        n += 2;
+        term = (-1) * term * x_squared * (n - 1) / n;
+        result += term;
+    }
 
-//     return result;
-// }
+    return result;
+}
 
-// double atan2(double y, double x) {
-//     if (x > 0) {
-//         return atan(y / x);  // First quadrant
-//     } else if (x < 0 && y >= 0) {
-//         return atan(y / x) + M_PI;  // Second quadrant
-//     } else if (x < 0 && y < 0) {
-//         return atan(y / x) - M_PI;  // Third quadrant
-//     } else if (x == 0 && y != 0) {
-//         return (y > 0) ? M_PI / 2 :  -M_PI / 2;  // Handle vertical line case
-//     } else {
-//         return 0;  // Undefined or zero case
-//     }
-// }
+double atan2(double y, double x) {
+    if (x > 0) {
+        return atan(y / x);  // First quadrant
+    } else if (x < 0 && y >= 0) {
+        return atan(y / x) + M_PI;  // Second quadrant
+    } else if (x < 0 && y < 0) {
+        return atan(y / x) - M_PI;  // Third quadrant
+    } else if (x == 0 && y != 0) {
+        return (y > 0) ? M_PI / 2 :  -M_PI / 2;  // Handle vertical line case
+    } else {
+        return 0;  // Undefined or zero case
+    }
+}
 
-// void driveTo(int posX, int posY) {
-//   // Get current values
-//   int currentPosX = 0; // Current Pos to be determined
-//   int currentPosY = 0;
-//   int currentHeading = 0; // Current heading to be determined
-//   double deltaX = posX - currentPosX;
-//   double deltaY = posY - currentPosY;
+void driveTo(int posX, int posY) {
+  // Get current values
+  int currentPosX = 0; // Current Pos to be determined
+  int currentPosY = 0;
+  int currentHeading = 0; // Current heading to be determined
+  double deltaX = posX - currentPosX;
+  double deltaY = posY - currentPosY;
   
-//   // Calculate distance and angle
-//   double distance = sqrt(deltaX * deltaX + deltaY * deltaY);
-//   double angle = atan2(deltaY, deltaX) * 180 / M_PI;
+  // Calculate distance and angle
+  double distance = sqrt(deltaX * deltaX + deltaY * deltaY);
+  double angle = atan2(deltaY, deltaX) * 180 / M_PI;
   
-//   // Drivetrain.turnToHeading(angle, degrees);
-//   // Drivetrain.driveFor(forward, distance, mm);
-// }
+  // Drivetrain.turnToHeading(angle, degrees);
+  // Drivetrain.driveFor(forward, distance, mm);
+}
 
 void autonomous(void) {
   // ..........................................................................
