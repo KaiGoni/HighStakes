@@ -126,6 +126,8 @@ void autonomous(void) {
   // Insert autonomous user code here.
   // ..........................................................................
   Drivetrain.driveFor(forward, 300, mm);
+  wait(1000, msec);
+  driveTo(300, 300);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -169,11 +171,11 @@ void usercontrol(void) {
     // ........................................................................
 
     // calculate the drivetrain motor velocities from the controller joystick axies
-    int drivetrainLeftSideSpeed = Controller1.Axis3.position() + Controller1.Axis4.position();
-    int drivetrainRightSideSpeed = Controller1.Axis3.position() - Controller1.Axis4.position();
+    int drivetrainLeftSideSpeed = (Controller1.Axis3.position() * 0.8) + (Controller1.Axis1.position() * 0.6);
+    int drivetrainRightSideSpeed = (Controller1.Axis3.position() * 0.8) - (Controller1.Axis1.position() * 0.6);
 
-    // // If values in deadband range, stop the drive motors and skip the motor control
-    if (drivetrainLeftSideSpeed < 5 && drivetrainLeftSideSpeed > -5 && drivetrainRightSideSpeed < 5 && drivetrainRightSideSpeed > -5) {
+    // If values in deadband range, stop the drive motors and skip the motor control
+    if (Controller1.Axis1.position() < 5 && Controller1.Axis1.position() > -5 && Controller1.Axis2.position() < 5 && Controller1.Axis2.position() > -5 && Controller1.Axis3.position() < 5 && Controller1.Axis3.position() > -5 && Controller1.Axis4.position() < 5 && Controller1.Axis4.position() > -5) {
       // Stop the drive motors
       LeftDriveSmart.stop();
       RightDriveSmart.stop();
