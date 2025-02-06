@@ -16,6 +16,7 @@
   for (int iterator = 0; iterator < iterations; iterator++)
 
 
+vex::brain Brain;
 
 vex::motor leftMotorA = vex::motor(vex::PORT19, vex::ratio6_1, false);
 vex::motor leftMotorB = vex::motor(vex::PORT20, vex::ratio6_1, false);
@@ -34,3 +35,4 @@ vex::motor rightIntakeMotorB = vex::motor(vex::PORT2, vex::ratio6_1, false);
 vex::motor_group rightIntake = vex::motor_group(rightIntakeMotorA, rightIntakeMotorB);
 
 vex::controller Controller1 = vex::controller(vex::primary);
+vex::digital_out pnematicPort = vex::digital_out(Brain.ThreeWirePort.A);
